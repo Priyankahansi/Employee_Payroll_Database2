@@ -1,0 +1,42 @@
+create database payroll;
+show databases;
+use payroll;
+create table employee(id int auto_increment,name varchar(30),
+salary double,department varchar(30),Joining_Date date,
+primary key(id));
+desc employee;
+insert into employee(name,salary,department,
+joining_date) values ('Paru',300000,
+'cs-engg','2019-12-09'),('Praju',500000,
+'civil-engg','2018-09-06'),('Pratham',600000,
+'ee-engg','2017-11-08'),('Chinnu',900000,
+'ec-engg','2019-03-07');
+select * from employee;
+select name,salary from employee where name='Praju';
+select name,salary from employee where 
+joining_date between '2017-11-08' and '2018-12-09';
+alter table employee add column Gender varchar(7);
+insert into employee(name,salary,department,
+joining_date) values ('preeti',900000,
+'CE-engg','2019-09-08');
+update employee set Gender='male' where id  between 1 and 3;
+update employee set Gender='female' where id in (4,5);
+select Gender,sum(salary) as sum,avg(salary) 
+as average,max(salary) as maximum,min(salary) as minimum
+from employee group by Gender;
+select Gender,count(*) from employee group by Gender;
+alter table employee add column phone varchar(30);
+alter table employee add column address varchar(90);
+update employee set phone='999999990' where id 
+in (1,2,3);
+update employee set phone='998800990' where id 
+in (4,5);
+update employee set address='Hosa oni' where 
+id in (1,3,5); 
+update employee set address='MahaGanapati nagar' where 
+id in (2,4); 
+update employee set name='Terissa',
+department='sales-marketing' where id=2;
+select * from employee where name='Terissa';
+update employee set Gender='female' where id=2;
+
